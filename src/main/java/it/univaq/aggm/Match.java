@@ -3,6 +3,8 @@ package it.univaq.aggm;
 public class Match {
 	private Team localTeam;
 	private Team visitorTeam;
+	private int localTeamScore;
+	private int visitorTeamScore;
 	public Team getLocalTeam() {
 		return localTeam;
 	}
@@ -14,6 +16,18 @@ public class Match {
 	}
 	public void setVisitorTeam(Team visitorTeam) {
 		this.visitorTeam = visitorTeam;
+	}
+	public int getLocalTeamScore() {
+		return localTeamScore;
+	}
+	public void setLocalTeamScore(int localTeamScore) {
+		this.localTeamScore = localTeamScore;
+	}
+	public int getVisitorTeamScore() {
+		return visitorTeamScore;
+	}
+	public void setVisitorTeamScore(int visitorTeamScore) {
+		this.visitorTeamScore = visitorTeamScore;
 	}
 	
 }

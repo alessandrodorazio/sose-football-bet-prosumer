@@ -27,8 +27,10 @@ public class BetService {
 		Element element = (Element) node;
 		double localTeamQuote = Double.parseDouble(element.getElementsByTagName("localTeamQuote").item(0).getTextContent());
 		double visitorTeamQuote = Double.parseDouble(element.getElementsByTagName("visitorTeamQuote").item(0).getTextContent());
+		double tieQuote = Double.parseDouble(element.getElementsByTagName("tieQuote").item(0).getTextContent());
 		bet.setLocalTeamQuote(localTeamQuote);
 		bet.setVisitorTeamQuote(visitorTeamQuote);
+		bet.setTieQuote(tieQuote);
 	
 		return bet;
 	}

@@ -41,9 +41,13 @@ public class MatchService {
 				 Team local = getTeamFromElement(localTeam);
 				 Element visitorTeam = (Element) element.getElementsByTagName("visitorTeam").item(0);
 				 Team visitor = getTeamFromElement(visitorTeam);
+				 String localScore = element.getElementsByTagName("localScore").item(0).getTextContent();
+				 String visitorScore = element.getElementsByTagName("visitorScore").item(0).getTextContent();
 				 Match match = new Match();
 				 match.setLocalTeam(local);
 				 match.setVisitorTeam(visitor);
+				 match.setLocalTeamScore(Integer.parseInt(localScore));
+				 match.setVisitorTeamScore(Integer.parseInt(visitorScore));
 				 result.add(match);
 			 }
 		 }
@@ -58,7 +62,7 @@ public class MatchService {
 			.build();
 		Response response = client.newCall(request).execute();
 		String data = response.body().string();
-		System.out.println(data.toString());
+		//System.out.println(data.toString());
 		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(data)));
 		doc.getDocumentElement().normalize();
 		return doc;
