@@ -5,6 +5,8 @@ public class Match {
 	private Team visitorTeam;
 	private int localTeamScore;
 	private int visitorTeamScore;
+	private String coordinates;
+	
 	public Team getLocalTeam() {
 		return localTeam;
 	}
@@ -29,5 +31,12 @@ public class Match {
 	public void setVisitorTeamScore(int visitorTeamScore) {
 		this.visitorTeamScore = visitorTeamScore;
 	}
+	public String getCoordinates() {
+		return coordinates;
+	}
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
+	}
+	
 	
 }

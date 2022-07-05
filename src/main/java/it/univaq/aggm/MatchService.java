@@ -43,11 +43,13 @@ public class MatchService {
 				 Team visitor = getTeamFromElement(visitorTeam);
 				 String localScore = element.getElementsByTagName("localScore").item(0).getTextContent();
 				 String visitorScore = element.getElementsByTagName("visitorScore").item(0).getTextContent();
+				 String coordinates = element.getElementsByTagName("coordinates").item(0).getTextContent();
 				 Match match = new Match();
 				 match.setLocalTeam(local);
 				 match.setVisitorTeam(visitor);
 				 match.setLocalTeamScore(Integer.parseInt(localScore));
 				 match.setVisitorTeamScore(Integer.parseInt(visitorScore));
+				 match.setCoordinates(coordinates);
 				 result.add(match);
 			 }
 		 }
