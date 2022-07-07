@@ -15,18 +15,14 @@ import org.xml.sax.SAXException;
 @Produces("text/xml")
 @WebService(endpointInterface="it.univaq.aggm.ServiceRepositoryInterface")
 public class ServiceRepository implements ServiceRepositoryInterface {
-	@GET
-	@Path("/get")
+	@GET @Path("/")
 	public ArrayList<MatchWithBet> getMatchesWithBet() throws IOException, SAXException, ParserConfigurationException {
 		ArrayList<MatchWithBet> result = new ArrayList<MatchWithBet>();
 		
-		ArrayList<Match> matches = MatchService.getTodayMatches();
-		for(int i=0; i<matches.size(); i++) {
-			MatchWithBet mw = new MatchWithBet();
-			mw.setMatch(matches.get(i));
-			Bet bet = BetService.getBetForMatch(matches.get(i));
-			mw.setBet(bet);
-			result.add(mw);
+		ArrayList<Match> matches = MatchService.getTodayMatches(); // get all matches
+		for(int i=0; i<matches.size(); i++) { // iterate through them
+			Bet bet = BetService.getBetForMatch(matches.get(i)); // get bet
+			result.add(new MatchWithBet(matches.get(i), bet)); // generate MatchWithBet object
 		} 
 		return result;
 	}

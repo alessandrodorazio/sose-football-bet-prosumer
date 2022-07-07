@@ -1,5 +1,8 @@
 package it.univaq.aggm;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Bet")
 public class Bet {
 	private double localTeamQuote;
 	private double visitorTeamQuote;
@@ -11,6 +14,16 @@ public class Bet {
 	public void setTieQuote(double tieQuote) {
 		this.tieQuote = tieQuote;
 	}
+	
+	public Bet() {
+		
+	}
+	
+	public Bet(double localTeamQuote, double visitorTeamQuote) {
+		this.localTeamQuote = localTeamQuote;
+		this.visitorTeamQuote = visitorTeamQuote;
+	}
+	
 	public double getLocalTeamQuote() {
 		return localTeamQuote;
 	}

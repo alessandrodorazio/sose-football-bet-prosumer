@@ -21,20 +21,12 @@ import org.w3c.dom.NodeList;
 public class BetService {
 	public static Bet getBetForMatch(Match m) throws IOException, SAXException, ParserConfigurationException {
 		Document doc = getDocument(m);
-		NodeList list = doc.getElementsByTagName("Bet");
-		Bet bet = new Bet();
+		NodeList list = doc.getElementsByTagName("Bet"); // get Bet element from XML document
 		Node node = list.item(0);
-		Element element = (Element) node;
-		double localTeamQuote = Double.parseDouble(element.getElementsByTagName("localTeamQuote").item(0).getTextContent());
-		double visitorTeamQuote = Double.parseDouble(element.getElementsByTagName("visitorTeamQuote").item(0).getTextContent());
-		double tieQuote = Double.parseDouble(element.getElementsByTagName("tieQuote").item(0).getTextContent());
-		bet.setLocalTeamQuote(localTeamQuote);
-		bet.setVisitorTeamQuote(visitorTeamQuote);
-		bet.setTieQuote(tieQuote);
-	
-		return bet;
+		return generateBetFromElement((Element) node);
 	}
 	
+	// get the XML document from Bet Service Provider
 	private static Document getDocument(Match m) throws IOException, SAXException, ParserConfigurationException {
 		OkHttpClient client = new OkHttpClient();
 		String url = "http://localhost:8082/bets/calculate?localTeam=" + m.getLocalTeam().getId() + "&visitorTeam=" + m.getVisitorTeam().getId();
@@ -45,5 +37,15 @@ public class BetService {
 		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(inputSource);
 		doc.getDocumentElement().normalize();
 		return doc;
+	}
+	
+	// create bet object from Bet XML Element
+	private static Bet generateBetFromElement(Element element) {
+		double localTeamQuote = Double.parseDouble(element.getElementsByTagName("localTeamQuote").item(0).getTextContent());
+		double visitorTeamQuote = Double.parseDouble(element.getElementsByTagName("visitorTeamQuote").item(0).getTextContent());
+		double tieQuote = Double.parseDouble(element.getElementsByTagName("tieQuote").item(0).getTextContent());
+		Bet bet = new Bet(localTeamQuote, visitorTeamQuote);
+		bet.setTieQuote(tieQuote);
+		return bet;
 	}
 }
