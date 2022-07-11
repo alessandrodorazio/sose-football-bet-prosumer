@@ -46,7 +46,6 @@ public class MatchService {
 		Request request = new Request.Builder().url(url).get().build();
 		Response response = client.newCall(request).execute();
 		String data = response.body().string();
-		//System.out.println(data.toString());
 		Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new InputSource(new StringReader(data)));
 		doc.getDocumentElement().normalize();
 		return doc;
