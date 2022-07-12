@@ -13,7 +13,7 @@ public class StartServiceFootballBetProsumer {
 
 	public static void main(String[] args) {
 		String restAddress = "http://0.0.0.0:8084/";
-		String soapAddress = "http://localhost:8094/match-bet";
+		String soapAddress = "http://0.0.0.0:8094/match-bet";
 		startRest(restAddress);
 		startSoap(soapAddress);
 	}
