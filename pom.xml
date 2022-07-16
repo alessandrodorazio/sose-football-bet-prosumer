@@ -22,8 +22,8 @@
 	</dependency>
 	<dependency>
 	    <groupId>org.apache.cxf</groupId>
-	    <artifactId>cxf-bundle-jaxrs</artifactId>
-	    <version>2.7.18</version>
+	    <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+	    <version>3.1.6</version>
 	</dependency>
 
   </dependencies>
